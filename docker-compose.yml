@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  mysql:
+    build: ./docker/mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_DATABASE: docker
+    networks:
+      docker:
+        ipv4_address: 172.20.0.3
+    # ports:
+    #     - '3306:3306'
+    volumes:
+      - ./docker/database:/var/lib/mysql
+    restart: always
+
+networks:
+  docker:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
