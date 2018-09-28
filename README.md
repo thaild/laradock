@@ -1,6 +1,6 @@
 # Docker-compose for project laravel
 
-### (MySQL+PHP+Adminer+Apache)
+##(MySQL+PHP+Adminer+Apache)
 
 - Change path to source code of project at `volumes` of service `php-laravel` to mount source code to container.
 
@@ -21,7 +21,7 @@
 ## Apache [172.20.0.89:80]
 - Please change file hosts: 172.20.0.89     blog.com
 
-## Mysql [172.20.0.3:3306]
+## MySql [172.20.0.3:3306]
 - MYSQL_ROOT_PASSWORD: root
 - MYSQL_USER: docker
 - MYSQL_PASSWORD: docker
