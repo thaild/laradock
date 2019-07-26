@@ -9,4 +9,3 @@
 <?php
 phpinfo();
 ?>
-

@@ -1,12 +1,24 @@
 version: '2'
 
 services:
-  php-laravel:
+  php70:
     image: connectivdocker/laravel-docker-php70
-    container_name: php
+    container_name: php70
     networks:
-      docker:
-        ipv4_address: 172.20.0.70
+      internal:
+        ipv4_address: 172.30.0.70
+    links:
+    - mysql
+    volumes:
+    - ./blog:/var/www/html/blog.com
+    restart: always
+
+  php71:
+    image: connectivdocker/laravel-docker-php71
+    container_name: php71
+    networks:
+      internal:
+        ipv4_address: 172.30.0.71
     links:
     - mysql
     volumes:
@@ -17,24 +29,26 @@ services:
     image: connectivdocker/laravel-docker-httpd
     container_name: httpd
     networks:
-      docker:
-        ipv4_address: 172.20.0.89
-#    ports:
-#    - '80:80'
-#    - '443:443'
+      internal:
+        ipv4_address: 172.30.0.89
+    ports:
+    - '80:80'
+    - '443:443'
     volumes:
     - ./docker/httpd-alpine/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
     - ./docker/httpd-alpine/conf/virtual-hosts:/usr/local/apache2/conf/extra/vhosts
     - ./docker/httpd-alpine/conf/ssl:/usr/local/apache2/ssl
     - ./docker/logs/httpd:/var/log/httpd
     links:
-    - php-laravel
+      - php70
+      - php71
     volumes_from:
-    - php-laravel
+      - php70
+      - php71
     restart: always
 
   mysql:
-    image: connectivdocker/laravel-docker-mysql
+    image: connectivdocker/laravel-mysql
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -42,16 +56,14 @@ services:
       MYSQL_PASSWORD: docker
       MYSQL_DATABASE: docker
     networks:
-      docker:
-        ipv4_address: 172.20.0.3
-    # ports:
-    #     - '3306:3306'
+      internal:
+        ipv4_address: 172.33.0.3
     volumes:
     - ./docker/database:/var/lib/mysql
     restart: always
 
 networks:
-  docker:
+  internal:
     ipam:
       config:
-      - subnet: 172.20.0.0/16
+      - subnet: 172.30.0.0/16

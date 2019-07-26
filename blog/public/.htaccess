@@ -4,7 +4,12 @@
     </IfModule>
 
     RewriteEngine On
-
+    
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+    Header set Access-Control-Max-Age "10000"
+    Header set Access-Control-Allow-Headers "x-requested-with, Content-Type, Accept-Encoding, Accept-Language, Cookie, Referer"
+    
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

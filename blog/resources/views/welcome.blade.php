@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta property="og:url" content="https://gfl-api.demo.connectiv.vn/example?id=5555577">
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -91,5 +91,22 @@
                 </div>
             </div>
         </div>
+
+    <!-- ▽ Load GFL Embed -->
+    <div id="gfl_root"></div>
+    <script>
+      // Get i
+      let elements = '1,4,2,3,5,6';
+      let domain = 'gfl-api.demo.connectiv.vn';
+
+      (function(d, s, src, els){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      js = d.createElement(s);
+      js.src = '//' + src + '/mix/graphql.js';
+      js.setAttribute("elements", els);
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document,'script',domain, elements));
+    </script>
+    <!-- △ Load GFL Embed -->
     </body>
 </html>
