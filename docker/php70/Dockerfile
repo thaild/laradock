@@ -2,7 +2,7 @@ ARG PHP_VERSION=7.0
 
 FROM php:${PHP_VERSION}-fpm-alpine
 
-LABEL MAINTAINER="thaild <thaiattt@gmail.com>"
+LABEL MAINTAINER="thaild <thai.le.connectiv@gmail.com>"
 
 RUN apk update && apk upgrade                                                      && \
     docker-php-source extract                                                      && \

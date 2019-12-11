@@ -1,5 +1,5 @@
 FROM httpd:2.4.33-alpine
 
-LABEL maintainer="thaild <thaiattt@gmail.com>"
+LABEL MAINTAINER="thaild <thai.le.connectiv@gmail.com>"
 
 CMD ["httpd-foreground"]

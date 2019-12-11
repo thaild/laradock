@@ -1,7 +1,5 @@
-/.idea
+# IDE / Editor
+.idea
+.vscode
 /.vagrant
 # .env
-nohup*
-yarn.lock
-.vscode
-package-lock.json

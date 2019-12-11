@@ -6,11 +6,9 @@ services:
     container_name: php70
     networks:
       internal:
-        ipv4_address: 172.30.0.70
     links:
     - mysql
     volumes:
-    - ./blog:/var/www/html/blog.com
     - ./example:/var/www/html/example.com
 #    - path-to-your-project:/var/www/html/your-project
     restart: always
@@ -20,12 +18,22 @@ services:
     container_name: php71
     networks:
       internal:
-        ipv4_address: 172.30.0.71
     links:
     - mysql
     volumes:
-    - ./blog:/var/www/html/blog.com
-    - ./example:/var/www/html/example.com
+    - ./example:/var/www/html/example71.com
+#    - path-to-your-project:/var/www/html/your-project
+    restart: always
+
+  php72:
+    build: ./docker/php72
+    container_name: php72
+    networks:
+      internal:
+    links:
+    - mysql
+    volumes:
+    - ./example:/var/www/html/example72.com
 #    - path-to-your-project:/var/www/html/your-project
     restart: always
 
@@ -35,9 +43,6 @@ services:
     networks:
       internal:
         ipv4_address: 172.30.0.89
-    ports:
-    - '80:80'
-    - '443:443'
     volumes:
     - ./docker/httpd-alpine/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
     - ./docker/httpd-alpine/conf/virtual-hosts:/usr/local/apache2/conf/extra/vhosts
@@ -46,9 +51,11 @@ services:
     links:
     - php70
     - php71
+    - php72
     volumes_from:
     - php70
     - php71
+    - php72
     restart: always
 
   mysql:
