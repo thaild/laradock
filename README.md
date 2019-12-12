@@ -2,11 +2,11 @@
 
 ## Apache
 - iamges: httpd:2.4.33-alpine
-- IP address: 172.20.0.89
-- Please add to file hosts: 172.20.0.89     blog.com    example.com
+- IP address: 172.30.0.89
+- Please add to file hosts: 172.30.0.89     blog.com    example.com
 
 ## mysql 
-- IP address: 172.20.0.3
+- IP address: 172.30.0.3
 - MYSQL_ROOT_PASSWORD: root
 - MYSQL_USER: docker
 - MYSQL_PASSWORD: docker
@@ -14,6 +14,7 @@
 
 ## php
 - This container build base docker-images: `php:7.x-fpm-alpine`  
+
 ### This container Installed:
  - Composer
  - npm
