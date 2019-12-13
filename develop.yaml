@@ -37,6 +37,18 @@ services:
 #    - path-to-your-project:/var/www/html/your-project
     restart: always
 
+  php73:
+    build: ./docker/php73
+    container_name: php73
+    networks:
+      internal:
+    links:
+    - mysql
+    volumes:
+    - ./example:/var/www/html/example73.com
+#    - path-to-your-project:/var/www/html/your-project
+    restart: always
+
   httpd:
     build: ./docker/httpd-alpine
     container_name: httpd
@@ -52,10 +64,12 @@ services:
     - php70
     - php71
     - php72
+    - php73
     volumes_from:
     - php70
     - php71
     - php72
+    - php73
     restart: always
 
   mysql:
