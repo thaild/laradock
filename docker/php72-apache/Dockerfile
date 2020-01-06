@@ -8,7 +8,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update && apt-get install -y --fix-missing                                 \
-    apt-utils git libtool argon2 libargon2-0 libargon2-0-dev libzip-dev                \
+    apt-utils git libtool argon2 libargon2-0 libargon2-0-dev libzip-dev libpq-dev      \
     tini libmcrypt-dev libmemcached-dev libxslt-dev libmagickwand-dev libssh2-1-dev && \
     \
     docker-php-source extract                                                       && \
