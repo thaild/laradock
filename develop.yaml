@@ -37,6 +37,20 @@ services:
 #    - path-to-your-project:/var/www/html/your-project
     restart: always
 
+  php72-apache:
+    build: ./docker/php72-apache
+    container_name: php72-apache
+    networks:
+      internal:
+        ipv4_address: 172.30.0.80
+    links:
+    - mysql
+    volumes:
+    - ./example:/var/www/html/example72.com
+    # - ./docker/php72-apache/vhosts/example72.conf:/etc/apache2/sites-available/example72.conf
+    # - path-to-your-project:/var/www/html/your-project
+    restart: always
+
   httpd:
     build: ./docker/httpd-alpine
     container_name: httpd

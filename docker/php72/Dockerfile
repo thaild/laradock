@@ -4,6 +4,7 @@ FROM php:${PHP_VERSION}-fpm-alpine
 
 LABEL MAINTAINER="thaild <thai.le.connectiv@gmail.com>"
 
+# Install dependencies
 RUN apk update && apk upgrade                                                      && \
     docker-php-source extract                                                      && \
     apk add --no-cache --virtual .build-dependencies                                  \
@@ -51,7 +52,7 @@ RUN composer global require "laravel/envoy=~1.0"
 # Install NPM
 RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
 
-RUN npm install -g yarn json-server
+RUN npm install -g yarn
 
 WORKDIR /var/www/html
 

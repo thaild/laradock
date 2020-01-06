@@ -4,6 +4,7 @@ FROM php:${PHP_VERSION}-fpm-alpine
 
 LABEL MAINTAINER="thaild <thai.le.connectiv@gmail.com>"
 
+# Install dependencies
 RUN apk update && apk upgrade                                                      && \
     docker-php-source extract                                                      && \
     apk add --no-cache --virtual .build-dependencies                                  \
