@@ -9,13 +9,14 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Install dependencies
 RUN apt-get update && apt-get install -y --fix-missing                                 \
     apt-utils git libtool argon2 libargon2-0 libargon2-0-dev libzip-dev libpq-dev      \
-    tini libmcrypt-dev libmemcached-dev libxslt-dev libmagickwand-dev libssh2-1-dev && \
+    tini libmcrypt-dev libmemcached-dev libxslt-dev libmagickwand-dev libssh2-1-dev    \
+    libgmp-dev                                                                      && \
     \
     docker-php-source extract                                                       && \
     \
     docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)"                            \
     bcmath calendar hash intl opcache pcntl shmop                                      \
-    soap tokenizer xml xsl zip mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd          && \                                          && \
+    soap tokenizer xml xsl zip mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd          && \
     \
     docker-php-ext-configure opcache --enable-opcache                               && \
     docker-php-ext-install opcache                                                  && \
