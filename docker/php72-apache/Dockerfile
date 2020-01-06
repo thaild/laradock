@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --fix-missing                          
     \
     docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)"                            \
     bcmath calendar hash intl opcache pcntl shmop                                      \
-    soap tokenizer xml xsl zip                                                      && \
+    soap tokenizer xml xsl zip mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd          && \                                          && \
     \
     docker-php-ext-configure opcache --enable-opcache                               && \
     docker-php-ext-install opcache                                                  && \
