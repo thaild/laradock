@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y --fix-missing                          
     rm -rf /tmp/* /var/cache/*
 
 # Set the locale
-RUN apt-get install locales -y
+RUN apt-get install locales-all -y
 RUN locale-gen en_US.UTF-8 en_GB.UTF-8 es_ES.UTF-8 ja_JP.UTF-8 vi_VN UTF-8 zh_CN.UTF-8
 
 # INSTALL COMPOSER
