@@ -51,7 +51,7 @@ RUN apt-get install sudo bash -y                                                
 RUN apt-get update -y && apt-get install -y --no-install-recommends nodejs yarn
 
 # Configure PHP for laravel
-COPY conf.d/* /etc/php/7.2/mods-available/
+COPY conf.d/* /usr/local/etc/php/conf.d/
 
 # Configure apache 
 RUN a2enmod rewrite expires ssl headers proxy_http vhost_alias
