@@ -30,8 +30,8 @@ RUN apt-get update && apt-get install -y --fix-missing                          
     rm -rf /tmp/* /var/cache/*
 
 # Set the locale
-RUN apt-get install locales-all -y
-RUN locale-gen en_US.UTF-8 en_GB.UTF-8 es_ES.UTF-8 ja_JP.UTF-8 vi_VN UTF-8 zh_CN.UTF-8
+RUN apt-get install locales locales-all -y && \
+    locale-gen en_US.UTF-8 en_GB.UTF-8 es_ES.UTF-8 ja_JP.UTF-8 vi_VN UTF-8 zh_CN.UTF-8
 
 # INSTALL COMPOSER
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -54,9 +54,9 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends nodejs yarn
 COPY conf.d/* /usr/local/etc/php/conf.d/
 
 # Configure apache 
-RUN a2enmod rewrite expires ssl headers proxy_http vhost_alias
-RUN echo "ServerName localhost" | tee /etc/apache2/conf-available/servername.conf
-RUN a2enconf servername
+RUN a2enmod rewrite expires ssl headers proxy_http vhost_alias                      &&\
+    echo "ServerName localhost" | tee /etc/apache2/conf-available/servername.conf   &&\
+    a2enconf servername
 
 # Configure vhost 
 # COPY vhosts/example72.conf /etc/apache2/sites-available/
