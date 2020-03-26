@@ -14,7 +14,7 @@ RUN apk update && apk upgrade                                                   
     apk add --no-cache                                                                 \
     tini libintl icu icu-dev libxml2-dev postgresql-dev freetype-dev libssh2           \
     libssh2-dev libjpeg-turbo-dev libmcrypt-dev libpng-dev gmp gmp-dev                 \
-    libmemcached-dev imagemagick-dev   libxslt-dev libmcrypt-dev                    && \
+    libmemcached-dev imagemagick-dev libxslt-dev libmcrypt-dev git                  && \
     \
     docker-php-ext-configure gd                                                        \
     --with-freetype-dir=/usr/include/                                                  \

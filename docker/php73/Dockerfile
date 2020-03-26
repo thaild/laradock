@@ -8,11 +8,11 @@ RUN apk update && apk upgrade                                                   
     docker-php-source extract                                                      && \
     apk add --no-cache --virtual .build-dependencies                                  \
     $PHPIZE_DEPS                                                                      \
-    zlib-dev cyrus-sasl-dev git curl autoconf  g++ gcc libtool make pcre-dev       && \
+    zlib-dev cyrus-sasl-dev curl autoconf  g++ gcc libtool make pcre-dev       && \
     \
     apk add --no-cache                                                                 \
     tini libintl icu icu-dev libxml2-dev postgresql-dev freetype-dev libssh2           \
-    libssh2-dev libjpeg-turbo-dev libmcrypt-dev libpng-dev gmp gmp-dev                 \
+    libssh2-dev libjpeg-turbo-dev libmcrypt-dev libpng-dev gmp gmp-dev git             \
     libmemcached-dev imagemagick-dev libzip-dev libxslt-dev libmcrypt-dev           && \
     \
     docker-php-ext-configure gd                                                        \
