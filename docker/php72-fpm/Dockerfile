@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --fix-missing                          
     docker-php-ext-install opcache                                                  && \
     \
     pecl install apcu imagick ssh2-1 xdebug                                         && \
-    docker-php-ext-enable apcu imagick ssh2                                         && \
+    docker-php-ext-enable apcu imagick ssh2 xdebug                                  && \
     \
     sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf       && \
     echo "expose_php=0" > /usr/local/etc/php/php.ini                                && \
