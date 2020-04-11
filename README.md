@@ -1,21 +1,15 @@
 # Docker-compose for project laravel
 
 ## Apache
-- iamges: httpd:2.4.33-alpine
-- IP address: 172.30.0.89
-- Please add to file hosts: 172.30.0.89     blog.com    example.com
+- based on images: httpd:2.4.33-alpine
 
 ## mysql 
-- IP address: 172.30.0.3
-- MYSQL_ROOT_PASSWORD: root
-- MYSQL_USER: docker
-- MYSQL_PASSWORD: docker
-- MYSQL_DATABASE: docker
+- based on images: mysql:5.7
 
 ## php
-- This container build base docker-images: `php:7.x-fpm-alpine`  
+- based on images: `php:7.x-fpm-alpine`  
 
-### This container Installed:
+### Installed:
  - Composer
  - npm
  - yarn

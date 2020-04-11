@@ -26,8 +26,8 @@ RUN apk update && apk upgrade                                                   
     docker-php-ext-configure opcache --enable-opcache                               && \
     docker-php-ext-install opcache                                                  && \
     \
-    pecl install apcu imagick ssh2-1 xdebug                                         && \
-    docker-php-ext-enable apcu imagick ssh2 xdebug                                  && \
+    pecl install apcu imagick ssh2-1                                                && \
+    docker-php-ext-enable apcu imagick ssh2                                         && \
     \
     sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf       && \
     echo "expose_php=0" > /usr/local/etc/php/php.ini                                && \
