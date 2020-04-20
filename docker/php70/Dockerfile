@@ -53,7 +53,3 @@ RUN composer global require "laravel/envoy=~1.0"
 RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
 
 RUN npm install -g yarn json-server
-
-WORKDIR /var/www/html
-
-EXPOSE 9000

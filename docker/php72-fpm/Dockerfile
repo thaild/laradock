@@ -44,7 +44,3 @@ RUN apt-get install sudo bash -y                                                
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     
 RUN apt-get update -y && apt-get install -y --no-install-recommends nodejs yarn
-
-WORKDIR /var/www/html
-
-EXPOSE 9000
