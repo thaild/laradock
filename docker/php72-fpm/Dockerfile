@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --fix-missing                          
     tini libmcrypt-dev libmemcached-dev libxslt-dev libmagickwand-dev libssh2-1-dev && \
     && \
     docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)"                            \
-    intl bcmath xsl zip soap mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd            && \
+    intl bcmath xsl zip soap mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd exif       && \
     \
     docker-php-ext-configure opcache --enable-opcache                               && \
     docker-php-ext-install opcache                                                  && \
