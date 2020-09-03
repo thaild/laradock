@@ -12,6 +12,17 @@ services:
       - ./example:/var/www/html/example.com
     restart: always
 
+  php56:
+    image: connectivdocker/php:5.6
+    container_name: php56
+    networks:
+      internal:
+    links:
+      - mysql
+    volumes:
+      - ./example:/var/www/html/example56.com
+    restart: always
+
   php71:
     image: connectivdocker/php:7.1
     container_name: php71

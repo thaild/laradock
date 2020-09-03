@@ -1,15 +1,19 @@
-# Docker-compose for project laravel
+# Docker-compose laravel framework
 
-## Apache
-- based on images: httpd:2.4.33-alpine
+## apache web service
 
-## mysql 
-- based on images: mysql:5.7
+- Based on images: httpd:2.4.33-alpine
 
-## php
-- based on images: `php:7.x-fpm-alpine`  
+## mysql service
 
-### Installed:
+- Based on images: mysql:5.7
+
+## php-fpm service
+
+- based on images: `php:${VERSION}-fpm-alpine`  
+
+### Installed
+
  - Composer
  - npm
  - yarn

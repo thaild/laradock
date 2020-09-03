@@ -1,10 +1,9 @@
-ARG PHP_VERSION=7.0
+ARG PHP_VERSION=5.6
 
 FROM php:${PHP_VERSION}-fpm-alpine
 
 LABEL MAINTAINER="thaild <thai.le.connectiv@gmail.com>"
 
-# Install dependencies
 RUN apk update && apk upgrade                                                      && \
     docker-php-source extract                                                      && \
     apk add --no-cache --virtual .build-dependencies                                  \
@@ -14,7 +13,7 @@ RUN apk update && apk upgrade                                                   
     apk add --no-cache                                                                 \
     tini libintl icu icu-dev libxml2-dev postgresql-dev freetype-dev libssh2           \
     libssh2-dev libjpeg-turbo-dev libmcrypt-dev libpng-dev gmp gmp-dev                 \
-    libmemcached-dev imagemagick-dev libxslt-dev libmcrypt-dev git                  && \
+    libmemcached-dev imagemagick-dev   libxslt-dev libmcrypt-dev                    && \
     \
     docker-php-ext-configure gd                                                        \
     --with-freetype-dir=/usr/include/                                                  \
@@ -26,8 +25,8 @@ RUN apk update && apk upgrade                                                   
     docker-php-ext-configure opcache --enable-opcache                               && \
     docker-php-ext-install opcache                                                  && \
     \
-    pecl install apcu imagick ssh2-1 xdebug                                         && \
-    docker-php-ext-enable apcu imagick ssh2                                         && \
+    pecl install imagick xdebug                                                     && \
+    docker-php-ext-enable imagick                                                   && \
     \
     sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf       && \
     echo "expose_php=0" > /usr/local/etc/php/php.ini                                && \
@@ -46,10 +45,10 @@ RUN curl -sS https://getcomposer.org/installer | php \
 # Allow Composer to be run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-# Install Laravel Envoy
-RUN composer global require "laravel/envoy=~1.0"
-
-# Install NPM
 RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
 
 RUN npm install -g yarn json-server
+
+WORKDIR /var/www/html
+
+EXPOSE 9000

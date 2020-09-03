@@ -13,6 +13,17 @@ services:
 #    - path-to-your-project:/var/www/html/your-project
     restart: always
 
+  php56:
+    build: ./docker/php56
+    container_name: php56
+    networks:
+      internal:
+    links:
+      - mysql
+    volumes:
+      - ./example:/var/www/html/example56.com
+    restart: always
+
   php71:
     build: ./docker/php71
     container_name: php71
@@ -74,11 +85,13 @@ services:
     - ./docker/httpd-alpine/conf/ssl:/usr/local/apache2/ssl
     - ./docker/logs/httpd:/var/log/httpd
     links:
+    - php56
     - php70
     - php71
     - php72
     - php73
     volumes_from:
+    - php56
     - php70
     - php71
     - php72
