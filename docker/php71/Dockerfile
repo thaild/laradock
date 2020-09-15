@@ -50,6 +50,19 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN composer global require "laravel/envoy=~1.0"
 
 # Install NPM
-RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
+# RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
+# RUN npm install -g yarn json-server
 
-RUN npm install -g yarn json-server
+# Install locales
+RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*
+
+# Set locales
+# https://github.com/lau/tzdata/blob/master/test/tzdata_fixtures/source_data/asia#L1434
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+RUN ls /usr/share/zoneinfo/Asia
+RUN echo "Asia/Tokyo" >  /etc/timezone
+
+ENV TZ Asia/Tokyo
+ENV LANG ja_JP.UTF-8
+ENV LANGUAGE ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8

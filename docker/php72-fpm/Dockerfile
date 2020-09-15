@@ -38,9 +38,23 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN composer global require "laravel/envoy=~1.0"
 
 # Install Nodejs NPM Yarn
-RUN apt-get install sudo bash -y                                                                        && \
-    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -                                     && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -                              && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+# RUN apt-get install sudo bash -y                                                                        && \
+#     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -                                     && \
+#     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -                              && \
+#     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     
-RUN apt-get update -y && apt-get install -y --no-install-recommends nodejs yarn
+# RUN apt-get update -y && apt-get install -y --no-install-recommends nodejs yarn
+
+# Install locales
+RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*
+
+# Set locales
+# https://github.com/lau/tzdata/blob/master/test/tzdata_fixtures/source_data/asia#L1434
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+RUN ls /usr/share/zoneinfo/Asia
+RUN echo "Asia/Tokyo" >  /etc/timezone
+
+ENV TZ Asia/Tokyo
+ENV LANG ja_JP.UTF-8
+ENV LANGUAGE ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8
