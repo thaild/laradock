@@ -38,12 +38,12 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN composer global require "laravel/envoy=~1.0"
 
 # Install Nodejs NPM Yarn
-# RUN apt-get install sudo bash -y                                                                        && \
-#     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -                                     && \
-#     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -                              && \
-#     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get install sudo bash -y                                                                        && \
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -                                     && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -                              && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     
-# RUN apt-get update -y && apt-get install -y --no-install-recommends nodejs yarn
+RUN apt-get update -y && apt-get install -y --no-install-recommends nodejs yarn
 
 # Install locales
 RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*

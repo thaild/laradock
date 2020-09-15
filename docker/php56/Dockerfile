@@ -45,10 +45,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 # Allow Composer to be run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+# Install NPM
 RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
 
-RUN npm install -g yarn json-server
-
-WORKDIR /var/www/html
-
-EXPOSE 9000
+RUN npm install -g yarn

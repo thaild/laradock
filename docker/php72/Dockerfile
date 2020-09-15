@@ -50,8 +50,9 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN composer global require "laravel/envoy=~1.0"
 
 # Install NPM
-# RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
-# RUN npm install -g yarn
+RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
+
+RUN npm install -g yarn
 
 # Install locales
 RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*
