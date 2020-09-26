@@ -8,7 +8,7 @@ RUN apk update && apk upgrade                                                   
     docker-php-source extract                                                      && \
     apk add --no-cache --virtual .build-dependencies                                  \
     $PHPIZE_DEPS                                                                      \
-    zlib-dev cyrus-sasl-dev curl autoconf  g++ gcc libtool make pcre-dev       && \
+    zlib-dev cyrus-sasl-dev curl autoconf  g++ gcc libtool make pcre-dev           && \
     \
     apk add --no-cache                                                                 \
     tini libintl icu icu-dev libxml2-dev postgresql-dev freetype-dev libssh2           \
@@ -25,8 +25,8 @@ RUN apk update && apk upgrade                                                   
     docker-php-ext-configure opcache --enable-opcache                               && \
     docker-php-ext-install opcache                                                  && \
     \
-    pecl install apcu imagick xdebug                                                && \
-    docker-php-ext-enable apcu imagick xdebug                                       && \
+    pecl install apcu imagick ssh2-1 xdebug                                         && \
+    docker-php-ext-enable apcu imagick ssh2 xdebug                                  && \
     \
     sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf       && \
     echo "expose_php=0" > /usr/local/etc/php/php.ini                                && \

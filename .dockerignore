@@ -1,6 +1,4 @@
 .git
-!.git/HEAD
-!.git/FETCH_HEAD
 .dockerignore
 Dockerfile*
 /docker
