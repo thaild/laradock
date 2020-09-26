@@ -5,8 +5,8 @@ FROM php:${PHP_VERSION}-fpm
 LABEL MAINTAINER="thaild <thai.le.connectiv@gmail.com>"
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --fix-missing                                 \
-    apt-utils git libtool argon2 libargon2-0 libargon2-0-dev libzip-dev                \
+RUN apt-get update && apt-get install -y --fix-missing apt-utils                       \
+    git libtool argon2 libargon2-0 libargon2-0-dev libzip-dev postgresql-dev           \
     tini libmcrypt-dev libmemcached-dev libxslt-dev libmagickwand-dev libssh2-1-dev && \
     docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)"                            \
     intl bcmath xsl zip soap mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd exif       && \
