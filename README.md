@@ -1,24 +1,25 @@
-# Docker-compose laravel framework
+# Laradock
 
-## apache web service
+PHP development environment based on Docker.
 
-- Based on images: httpd:2.4.33-alpine
+## web service
+
+- based on images: httpd:2.4.33-alpine
 
 ## mysql service
 
-- Based on images: mysql:5.7
+- based on images: mysql:5.7
 
-## php-fpm service
+## php service
 
-- based on images: `php:${VERSION}-fpm-alpine`  
+- based on images: `php:${VERSION}`
 
-### Installed
+### Installed dependencies
 
- - Composer
- - npm
- - yarn
- - and more extension php, check extension available: `php -m`
+    - Composer
+    - Nodejs/ yarn
+    - and more extension php, check extension available: `php -m`
  
  **read more about php-extension** [here](https://github.com/docker-library/docs/blob/master/php/README.md#how-to-install-more-php-extensions)
  
-# Enjoy it!
+## Enjoy it

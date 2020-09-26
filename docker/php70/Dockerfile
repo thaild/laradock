@@ -47,7 +47,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Install Laravel Envoy
-RUN composer global require "laravel/envoy=~1.0"
+RUN composer global require laravel/envoy
 
 # Install NPM
 RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*

@@ -41,7 +41,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Install Laravel Envoy
-RUN composer global require "laravel/envoy=~1.0"
+RUN composer global require laravel/envoy
 
 # Install Nodejs NPM Yarn
 RUN apt-get install sudo bash -y                                                                        && \

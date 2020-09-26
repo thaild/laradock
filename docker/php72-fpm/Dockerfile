@@ -8,7 +8,6 @@ LABEL MAINTAINER="thaild <thai.le.connectiv@gmail.com>"
 RUN apt-get update && apt-get install -y --fix-missing                                 \
     apt-utils git libtool argon2 libargon2-0 libargon2-0-dev libzip-dev                \
     tini libmcrypt-dev libmemcached-dev libxslt-dev libmagickwand-dev libssh2-1-dev && \
-    && \
     docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)"                            \
     intl bcmath xsl zip soap mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd exif       && \
     \
@@ -35,7 +34,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Install Laravel Envoy
-RUN composer global require "laravel/envoy=~1.0"
+RUN composer global require laravel/envoy
 
 # Install Nodejs NPM Yarn
 RUN apt-get install sudo bash -y                                                                        && \
