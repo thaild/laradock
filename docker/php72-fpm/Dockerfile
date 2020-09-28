@@ -45,7 +45,8 @@ RUN apt-get install sudo bash -y                                                
 RUN apt-get update -y && apt-get install -y --no-install-recommends nodejs yarn
 
 # Install locales
-RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*
+RUN apt-get install locales locales-all -y && \
+    locale-gen en_US.UTF-8 en_GB.UTF-8 ja_JP.UTF-8 vi_VN UTF-8 zh_CN.UTF-8
 
 # Set locales
 # https://github.com/lau/tzdata/blob/master/test/tzdata_fixtures/source_data/asia#L1434
