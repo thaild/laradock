@@ -21,10 +21,10 @@ RUN apk update && apk upgrade                                                   
     --with-jpeg-dir=/usr/include/                                                  &&  \
     \
     docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)"                            \
-    intl bcmath xsl zip soap mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd exif     && \
+    intl bcmath xsl zip soap mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd exif       && \
     \
     docker-php-ext-configure opcache --enable-opcache                               && \
-    docker-php-ext-install opcache                                                  && \
+    docker-php-ext-install opcache pcntl                                            && \
     \
     pecl install apcu imagick ssh2-1 xdebug                                         && \
     docker-php-ext-enable apcu imagick ssh2 xdebug                                  && \
