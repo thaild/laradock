@@ -60,6 +60,18 @@ services:
     # - path-to-your-project:/var/www/html/your-project
     restart: always
 
+  php74:
+    build: ./docker/php74
+    container_name: php74
+    networks:
+      internal:
+    links:
+    - mysql
+    volumes:
+    - ./example:/var/www/html/example74.com
+    # - path-to-your-project:/var/www/html/your-project
+    restart: always
+
   php72-apache:
     build: ./docker/php72-apache
     container_name: php72-apache
@@ -90,12 +102,14 @@ services:
     - php71
     - php72
     - php73
+    - php74
     volumes_from:
     - php56
     - php70
     - php71
     - php72
     - php73
+    - php74
     restart: always
 
   mysql:
