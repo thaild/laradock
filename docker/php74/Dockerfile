@@ -15,11 +15,9 @@ RUN apk update && apk upgrade                                                   
     libssh2-dev libjpeg-turbo-dev libmcrypt-dev libpng-dev gmp gmp-dev git             \
     libmemcached-dev imagemagick-dev libzip-dev libxslt-dev libmcrypt-dev           && \
     \
-    docker-php-ext-configure gd                                                        \
-    --with-freetype-dir=/usr/include/                                                  \
-    --with-jpeg-dir=/usr/include/                                                  &&  \
+    docker-php-ext-configure gd --with-freetype --with-jpeg                         && \
     \
-    docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)"                            \
+    docker-php-ext-install                           \
     intl bcmath xsl zip soap mysqli pdo pdo_mysql pdo_pgsql gmp iconv gd exif       && \
     \
     docker-php-ext-configure opcache --enable-opcache                               && \
