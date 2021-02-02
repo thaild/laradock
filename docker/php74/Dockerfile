@@ -36,16 +36,15 @@ RUN apk update && apk upgrade                                                   
 COPY conf.d/* /usr/local/etc/php/conf.d/
 
 # INSTALL COMPOSER
-RUN curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/ \
-    && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin/ --filename=composer
 
 # Allow Composer to be run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Install Laravel Envoy
 # CLI to Check For PHP Security Vulnerabilities
-RUN composer global require laravel/envoy enlightn/security-checker
+RUN composer --version
+RUN composer global require laravel/envoy enlightn/security-checker hirak/prestissimo
 
 # Install locales
 RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*
