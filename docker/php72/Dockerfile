@@ -47,7 +47,8 @@ RUN curl -sS https://getcomposer.org/installer | php \
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Install Laravel Envoy
-RUN composer self-update --2 && composer global require laravel/envoy
+# CLI to Check For PHP Security Vulnerabilities
+RUN composer global require laravel/envoy enlightn/security-checker
 
 # Install NPM
 RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
