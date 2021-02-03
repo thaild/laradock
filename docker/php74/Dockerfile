@@ -44,7 +44,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 # Install Laravel Envoy
 # CLI to Check For PHP Security Vulnerabilities
 RUN composer --version
-RUN composer global require laravel/envoy enlightn/security-checker hirak/prestissimo
+RUN composer global require laravel/envoy enlightn/security-checker
 
 # Install locales
 RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*
