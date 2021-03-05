@@ -49,11 +49,6 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN composer --version
 RUN composer global require laravel/envoy enlightn/security-checker
 
-# Install NPM
-RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
-
-RUN npm install -g yarn
-
 # Install locales
 RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*
 
@@ -67,3 +62,8 @@ ENV TZ Asia/Tokyo
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP.UTF-8
 ENV LC_ALL ja_JP.UTF-8
+
+# Install NPM
+RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
+
+RUN npm install -g yarn
