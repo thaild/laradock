@@ -45,7 +45,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Install Laravel Envoy
 # CLI to Check For PHP Security Vulnerabilities
-RUN composer --version
+RUN composer --version && composer self-update
 RUN composer global require laravel/envoy enlightn/security-checker
 
 # Install locales
