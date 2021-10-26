@@ -63,6 +63,6 @@ ENV LANGUAGE ja_JP.UTF-8
 ENV LC_ALL ja_JP.UTF-8
 
 # Install NPM
-RUN apk add --update --no-cache bash nodejs nodejs-npm && rm -rf /var/cache/apk/*
+RUN apk add --update --no-cache bash nodejs npm && rm -rf /var/cache/apk/*
 
 RUN npm install -g yarn
