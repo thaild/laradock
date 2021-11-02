@@ -23,13 +23,14 @@ RUN apk update && apk upgrade                                                   
     docker-php-ext-configure opcache --enable-opcache                               && \
     docker-php-ext-install opcache pcntl                                            && \
     \
-    pecl install apcu imagick xdebug                                                && \
-    docker-php-ext-enable apcu imagick xdebug                                       && \
+    pecl install apcu redis xdebug igbinary imagick-3.4.4                           && \ 
+    docker-php-ext-enable redis xdebug imagick igbinary apcu                        && \
     \
     sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf       && \
     echo "expose_php=0" > /usr/local/etc/php/php.ini                                && \
     \
     apk del .build-dependencies                                                     && \
+    apk del --purge $PHPIZE_DEPS                                                    && \
     docker-php-source delete                                                        && \
     rm -rf /tmp/* /var/cache/apk/*
 
@@ -45,6 +46,8 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 # CLI to Check For PHP Security Vulnerabilities
 RUN composer --version && composer self-update
 RUN composer global require laravel/envoy enlightn/security-checker
+
+RUN apk update && apk upgrade   
 
 # Install locales
 RUN apk add --update --no-cache tzdata && rm -rf /var/cache/apk/*
